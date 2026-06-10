@@ -39,38 +39,48 @@ Prompt útil no Copilot Chat (cole o conteúdo de 2–3 arquivos `.NSN` no chat 
 
 ## Termos encontrados
 
-| #   | Termo | Expansão | Programa | Contexto |
-| --- | ----- | -------- | -------- | -------- |
-| 1   |       |          |          |          |
-| 2   |       |          |          |          |
-| 3   |       |          |          |          |
-| 4   |       |          |          |          |
-| 5   |       |          |          |          |
-| 6   |       |          |          |          |
-| 7   |       |          |          |          |
-| 8   |       |          |          |          |
-| 9   |       |          |          |          |
-| 10  |       |          |          |          |
-| 11  |       |          |          |          |
-| 12  |       |          |          |          |
-| 13  |       |          |          |          |
-| 14  |       |          |          |          |
-| 15  |       |          |          |          |
-| 16  |       |          |          |          |
-| 17  |       |          |          |          |
-| 18  |       |          |          |          |
-| 19  |       |          |          |          |
-| 20  |       |          |          |          |
-| 21  |       |          |          |          |
-| 22  |       |          |          |          |
-| 23  |       |          |          |          |
-| 24  |       |          |          |          |
-| 25  |       |          |          |          |
-| 26  |       |          |          |          |
-| 27  |       |          |          |          |
-| 28  |       |          |          |          |
-| 29  |       |          |          |          |
-| 30  |       |          |          |          |
+| #  | Termo            | Expansão                                   | Programa / DDM            | Contexto | Origem |
+| -- | ---------------- | ------------------------------------------ | ------------------------- | -------- | ------ |
+| 1  | SIFAP            | Sistema de Fiscalização e Administração de Pagamentos | (sistema)        | Nome do sistema legado | DOC |
+| 2  | DDM              | Data Definition Module                     | adabas-ddms/*.ddm         | Definição de estrutura de arquivo Adabas | DOC |
+| 3  | FDT              | Field Definition Table                     | adabas-ddms/              | Tabela de definição de campos do Adabas | DOC |
+| 4  | FNR              | File Number                                | adabas-ddms/              | Número do arquivo Adabas (ex.: 150–153) | DOC |
+| 5  | MU               | Multiple Value (campo multivalor)          | PROGRAMA-SOCIAL.ddm       | Campo Adabas com múltiplos valores; vira tabela à parte no PostgreSQL | DOC |
+| 6  | PE               | Periodic Group (grupo periódico)           | PROGRAMA-SOCIAL.ddm       | Grupo repetido por exercício; vira tabela à parte | DOC |
+| 7  | BN-              | Prefixo de campo: Beneficiário             | BENEFICIARIO.ddm          | Prefixo de nomes de campo do cadastro de beneficiário | DOC |
+| 8  | PS-              | Prefixo de campo: Programa Social          | PROGRAMA-SOCIAL.ddm       | Prefixo de nomes de campo de programa social | DOC |
+| 9  | PG-              | Prefixo de campo: Pagamento                | PAGAMENTO.ddm             | Prefixo de nomes de campo de pagamento | DOC |
+| 10 | AU-              | Prefixo de campo: Auditoria                | AUDITORIA.ddm             | Prefixo de nomes de campo de auditoria | DOC |
+| 11 | NM               | Nome                                       | DDMs                      | Abreviação de campo (ex.: BN-NM-BENEF) | DOC |
+| 12 | NR               | Número                                      | DDMs                      | Abreviação de campo (ex.: BN-NR-CPF) | DOC |
+| 13 | CD               | Código                                     | DDMs                      | Abreviação de campo (ex.: BN-CD-SIT) | DOC |
+| 14 | DT               | Data                                       | DDMs                      | Abreviação de campo (ex.: PG-DT-CRED) | DOC |
+| 15 | VL               | Valor                                      | DDMs                      | Abreviação de campo (ex.: PG-VL-BRUTO) | DOC |
+| 16 | QT               | Quantidade                                 | DDMs                      | Abreviação de campo | DOC |
+| 17 | SG               | Sigla                                      | DDMs                      | Abreviação de campo | DOC |
+| 18 | IN               | Indicador                                  | DDMs                      | Abreviação de campo | DOC |
+| 19 | BENF / BENEF     | Beneficiário                               | CADBENEF, CALCBENF, VALBENEF, CONSBENF | Raiz de entidade (duas grafias no conjunto) | NOME |
+| 20 | CAD              | Cadastro                                   | CADBENEF, CADDEPEND, CADPROG | Prefixo de programas de cadastro/CRUD | NOME |
+| 21 | CALC             | Cálculo                                    | CALCBENF, CALCCORR, CALCDSCT | Prefixo de programas de cálculo | NOME |
+| 22 | VAL              | Validação                                  | VALBENEF, VALDOCS, VALELEG | Prefixo de programas de validação | NOME |
+| 23 | REL              | Relatório                                  | RELPGT, RELAUDIT          | Prefixo de programas de relatório | NOME |
+| 24 | CONS             | Consulta                                   | CONSBENF                  | Prefixo de programa de consulta | NOME |
+| 25 | BATCH            | Processamento batch (não interativo)       | BATCHPGT, BATCHCON, BATCHREL | Prefixo de programas agendados | NOME |
+| 26 | PGT / PG         | Pagamento                                  | BATCHPGT, RELPGT          | Raiz de entidade pagamento | NOME |
+| 27 | PROG             | Programa (social)                          | CADPROG                   | Raiz de entidade programa social | NOME |
+| 28 | DEPEND           | Dependente                                 | CADDEPEND                 | Dependente vinculado ao beneficiário titular | NOME |
+| 29 | CORR             | Correção / reajuste                        | CALCCORR                  | Cálculo de correção por índices anuais | NOME |
+| 30 | DSCT             | Desconto                                   | CALCDSCT                  | Cálculo de descontos e deduções legais | NOME |
+| 31 | ELEG             | Elegibilidade                              | VALELEG                   | Validação de elegibilidade | NOME |
+| 32 | DOCS             | Documentos                                 | VALDOCS                   | Validação de documentação comprobatória | NOME |
+| 33 | AUDIT            | Auditoria                                  | RELAUDIT, AUDITORIA.ddm   | Trilha/relatório de auditoria | NOME |
+| 34 | CPF              | Cadastro de Pessoa Física                  | VALBENEF (validação)      | Documento validado na inclusão cadastral | DOC |
+| 35 | NIS / NIT        | Número de Inscrição Social / Trabalhador   | VALBENEF                  | Identificador social validado | DOC |
+| 36 | CNAB             | Centro Nacional de Automação Bancária (240)| BATCHPGT/integração BB    | Layout de arquivo de remessa bancária | DOC |
+| 37 | SIAFI            | Sistema Integrado de Adm. Financeira       | BATCHCON                  | Sistema externo de conciliação financeira | DOC |
+| 38 | GDA              | Global Data Area                           | (vários programas)        | Área de dados global compartilhada (Natural) | DOC |
+| 39 | JES2             | Job Entry Subsystem 2                       | (scheduler batch)         | Agendador de jobs do mainframe | DOC |
+| 40 | 3270             | Terminal IBM 3270 (24x80)                  | programas online          | Padrão de tela dos maps Natural | DOC |
 
 > Adicione mais linhas conforme necessário. Não se limite a 30!
 
