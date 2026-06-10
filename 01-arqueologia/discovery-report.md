@@ -141,13 +141,13 @@ A doc de 2012 é explicitamente **parcial e não validada**: fórmula de cálcul
 | Regras de negócio encontradas | 86                                    |
 | Regras escondidas encontradas | 10 / 10                               |
 | Easter eggs encontrados       | 2 (+1 cand.) / 3                      |
-| Termos no glossário           | 0 / 30 ⚠️ (template vazio — pendente) |
+| Termos no glossário           | 40 / 30 ✅ (meta atingida)            |
 | Mistérios catalogados         | 22                                    |
 | Tempo total gasto             | \_\_\_ horas                          |
 
 > Fontes: [inventory.md](inventory.md), [business-rules-catalog.md](business-rules-catalog.md), [dependency-map.md](dependency-map.md), [mysteries-found.md](mysteries-found.md), [glossary.md](glossary.md).
 >
-> ⚠️ **Lacuna do Estágio 1:** [glossary.md](glossary.md) ainda é um template não preenchido (meta: ≥30 termos de domínio). Rode `/archaeology-kickoff` ou extraia os termos do código legado antes da passagem ao Estágio 2 — o vocabulário de domínio é input das EARS. Os demais 4 artefatos estão completos.
+> ✅ **Artefatos do Estágio 1 completos:** [glossary.md](glossary.md) contém 40 termos de domínio (meta: ≥30). Os 5 artefatos estão preenchidos e prontos para a passagem ao Estágio 2.
 
 ---
 
