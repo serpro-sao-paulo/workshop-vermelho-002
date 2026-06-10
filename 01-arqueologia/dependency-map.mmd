@@ -1,0 +1,66 @@
+%% Mapa de Dependências — SIFAP Legado (escopo: 01-arqueologia/legado-sifap/natural-programs/, recursive=true)
+%% Gerado pelo @archaeologist-agent. Toda aresta é rastreável a arquivo + linha (ver dependency-map.md).
+%% Achado central: NENHUM CALLNAT / INCLUDE / CALL / FETCH nos 15 programas.
+%% => zero arestas programa-para-programa. Só existem arestas programa-para-dados (Adabas DDM).
+flowchart LR
+  %% ---------- Nós de Programa (retângulos) ----------
+  CADBENEF["CADBENEF.NSN"]
+  CADDEPEND["CADDEPEND.NSN"]
+  CADPROG["CADPROG.NSN"]
+  CALCBENF["CALCBENF.NSN"]
+  CALCCORR["CALCCORR.NSN"]
+  CALCDSCT["CALCDSCT.NSN"]
+  VALBENEF["VALBENEF.NSN<br/>(isolado — sem acesso a DDM)"]
+  VALDOCS["VALDOCS.NSN<br/>(isolado — sem acesso a DDM)"]
+  VALELEG["VALELEG.NSN"]
+  CONSBENF["CONSBENF.NSN"]
+  RELPGT["RELPGT.NSN"]
+  RELAUDIT["RELAUDIT.NSN"]
+  BATCHPGT["BATCHPGT.NSN"]
+  BATCHCON["BATCHCON.NSN"]
+  BATCHREL["BATCHREL.NSN"]
+
+  %% ---------- Nós de Dados (cilindros) ----------
+  BENEFICIARIO[("DDM: BENEFICIARIO")]
+  PAGAMENTO[("DDM: PAGAMENTO")]
+  PROGRAMA_SOCIAL[("DDM: PROGRAMA-SOCIAL")]
+  AUDITORIA[("DDM: AUDITORIA")]
+  WORKFILE[("WORK FILE 1<br/>(CNAB 240 ASCII)")]
+
+  %% ---------- Arestas programa-para-dados ----------
+  CADBENEF -->|FIND/STORE/UPDATE| BENEFICIARIO
+  CADDEPEND -->|FIND/UPDATE| BENEFICIARIO
+  CADPROG -->|FIND/STORE| PROGRAMA_SOCIAL
+
+  CALCBENF -->|FIND| BENEFICIARIO
+  CALCBENF -->|FIND| PROGRAMA_SOCIAL
+  CALCBENF -->|STORE| PAGAMENTO
+  CALCCORR -->|READ/UPDATE| PAGAMENTO
+  CALCDSCT -->|FIND| BENEFICIARIO
+  CALCDSCT -->|FIND/UPDATE| PAGAMENTO
+
+  VALELEG -->|FIND| BENEFICIARIO
+  VALELEG -->|FIND| PROGRAMA_SOCIAL
+
+  CONSBENF -->|FIND| BENEFICIARIO
+  CONSBENF -->|READ| PAGAMENTO
+  RELPGT -->|READ| PAGAMENTO
+  RELPGT -->|FIND| BENEFICIARIO
+  RELAUDIT -->|READ| AUDITORIA
+
+  BATCHPGT -->|READ| BENEFICIARIO
+  BATCHPGT -->|FIND| PROGRAMA_SOCIAL
+  BATCHPGT -->|READ/FIND/STORE| PAGAMENTO
+  BATCHREL -->|READ| PAGAMENTO
+  BATCHREL -->|FIND| BENEFICIARIO
+  BATCHCON -->|FIND/UPDATE| PAGAMENTO
+  BATCHCON -->|READ/STORE| AUDITORIA
+  BATCHCON -->|READ| WORKFILE
+
+  %% ---------- Estilos ----------
+  classDef prog fill:#0f172a,stroke:#334155,color:#e2e8f0;
+  classDef data fill:#0f172a,stroke:#334155,color:#e2e8f0;
+  classDef iso fill:#0f172a,stroke:#b45309,color:#e2e8f0,stroke-dasharray:4 3;
+  class CADBENEF,CADDEPEND,CADPROG,CALCBENF,CALCCORR,CALCDSCT,VALELEG,CONSBENF,RELPGT,RELAUDIT,BATCHPGT,BATCHCON,BATCHREL prog;
+  class BENEFICIARIO,PAGAMENTO,PROGRAMA_SOCIAL,AUDITORIA,WORKFILE data;
+  class VALBENEF,VALDOCS iso;
